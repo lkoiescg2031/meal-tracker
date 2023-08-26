@@ -1,0 +1,69 @@
+{
+	"plugins": ["import", "prettier"],
+	"extends": [
+		"next/core-web-vitals",
+		"plugin:storybook/recommended",
+		"plugin:jsx-a11y/recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:import/recommended",
+		"plugin:import/typescript",
+		"plugin:import/errors",
+		"prettier"
+	],
+	"rules": {
+		"prettier/prettier": "error",
+		"camelcase": "error",
+		"react/react-in-jsx-scope": "off",
+		"react/no-unknown-property": "warn",
+		"react/no-unescaped-entities": "warn",
+		"no-restricted-imports": [
+			"error",
+			{
+				"patterns": [".*"]
+			}
+		],
+		"import/no-unresolved": "error",
+		"import/no-deprecated": "error",
+		"import/no-empty-named-blocks": "error",
+		"import/order": [
+			"error",
+			{
+				"distinctGroup": true,
+				"newlines-between": "always",
+				"groups": ["builtin", "external", "internal"],
+				"pathGroups": [
+					{
+						"pattern": "{react*, react/**, next*, next/**}",
+						"group": "builtin",
+						"position": "after"
+					},
+					{
+						"pattern": "@storybook/**",
+						"group": "external"
+					},
+					{
+						"pattern": "@/**",
+						"group": "internal",
+						"position": "before"
+					}
+				],
+				"alphabetize": {
+					"order": "asc",
+					"orderImportKind": "asc",
+					"caseInsensitive": false
+				},
+				"warnOnUnassignedImports": true
+			}
+		]
+	},
+	"settings": {
+		"import/resolver": {
+			"typescript": true,
+			"node": true
+		},
+		"import/external-module-folders": ["node_modules"],
+		"import/internal-regex": "^@/",
+		"import/cache": 0
+	}
+}
