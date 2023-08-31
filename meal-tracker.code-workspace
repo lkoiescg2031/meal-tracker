@@ -41,6 +41,7 @@
 			"autodocs",
 			"camelcase",
 			"esbenp",
+			"hookform",
 			"nextjs",
 			"Parens",
 			"tailwindcss"
