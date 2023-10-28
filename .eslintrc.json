@@ -31,10 +31,14 @@
 			{
 				"distinctGroup": true,
 				"newlines-between": "always",
-				"groups": ["builtin", "external", "internal"],
+				"groups": ["builtin", "external", "internal", "unknown"],
 				"pathGroups": [
 					{
-						"pattern": "{react*, react/**, next*, next/**}",
+						"pattern": "{react,react/**,next,next/**}",
+						"group": "builtin"
+					},
+					{
+						"pattern": "{classnames,@emotion/**,twin.macro}",
 						"group": "builtin",
 						"position": "after"
 					},
@@ -43,10 +47,21 @@
 						"group": "external"
 					},
 					{
-						"pattern": "@/**",
+						"pattern": "@/**/!(*.css)",
 						"group": "internal",
 						"position": "before"
+					},
+					{
+						"pattern": "@/**/*.css",
+						"group": "internal",
+						"position": "after"
 					}
+				],
+				"pathGroupsExcludedImportTypes": [
+					"react",
+					"next",
+					"classnames",
+					"@emotion"
 				],
 				"alphabetize": {
 					"order": "asc",
@@ -62,6 +77,7 @@
 			"typescript": true,
 			"node": true
 		},
+		"import/ignore": ["node_modules"],
 		"import/external-module-folders": ["node_modules"],
 		"import/internal-regex": "^@/",
 		"import/cache": 0

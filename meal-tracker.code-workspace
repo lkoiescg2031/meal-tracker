@@ -36,6 +36,9 @@
 			"source.fixAll.eslint": true,
 			"source.organizeImports": true
 		},
+		"files.associations": {
+			"*.css": "tailwindcss"
+		},
 		"typescript.preferences.importModuleSpecifier": "non-relative",
 		"cSpell.words": [
 			"autodocs",
@@ -43,8 +46,21 @@
 			"esbenp",
 			"hookform",
 			"nextjs",
-			"Parens",
-			"tailwindcss"
+			"tailwindcss",
+			"classname",
+			"nocomment",
+			"preinstall",
+			"tailwindcss",
+			"toolkits"
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"rvest.vs-code-prettier-eslint",
+			"dbaeumer.vscode-eslint",
+			"esbenp.prettier-vscode",
+			"streetsidesoftware.code-spell-checker",
+			"bradlc.vscode-tailwindcss"
 		]
 	}
 }

@@ -8,6 +8,13 @@ const config: StorybookConfig = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-onboarding',
 		'@storybook/addon-interactions',
+		'@storybook/addon-mdx-gfm',
+		{
+			name: '@storybook/addon-styling',
+			options: {
+				postCss: true,
+			},
+		},
 	],
 	async webpackFinal(config) {
 		if (!config.resolve) {
@@ -21,6 +28,28 @@ const config: StorybookConfig = {
 
 		return config
 	},
+	babel: async (config) => ({
+		...config,
+		plugins: [
+			...(config.plugins || []),
+			'babel-plugin-macros',
+			[
+				'@emotion/babel-plugin-jsx-pragmatic',
+				{
+					export: 'jsx',
+					import: '__cssprop',
+					module: '@emotion/react',
+				},
+			],
+			[
+				'@babel/plugin-transform-react-jsx',
+				{
+					pragma: '__cssprop',
+				},
+				'emotion-css-prop',
+			],
+		],
+	}),
 	framework: {
 		name: '@storybook/nextjs',
 		options: {},
